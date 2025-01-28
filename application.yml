@@ -2,6 +2,8 @@ general:
   kafka-topic: transactions-topic
 
 spring:
+
+        
   kafka:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -18,3 +20,15 @@ spring:
     logging:
       level:
         org.apache.kafka.clients.producer: DEBUG
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      mode: always
+      
