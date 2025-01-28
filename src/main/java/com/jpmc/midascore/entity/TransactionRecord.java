@@ -22,13 +22,17 @@ public class TransactionRecord {
 
     @Column(nullable = false)
     private String status; // "SUCCESS" or "FAILED"
+    
+    @Column(nullable = false)
+    private float incentive; // New field to store incentive amount
 
     protected TransactionRecord() {}
 
-    public TransactionRecord(UserRecord sender, UserRecord recipient, float amount, String status) {
+    public TransactionRecord(UserRecord sender, UserRecord recipient, float amount, float incentive, String status) {
         this.sender = sender;
         this.recipient = recipient;
         this.amount = amount;
+        this.incentive = incentive;
         this.status = status;
     }
 
@@ -52,4 +56,15 @@ public class TransactionRecord {
     public String getStatus() {
         return status;
     }
+    
+    public float getIncentive() {
+        return incentive;
+    }
+    
+    
+    public void setIncentive(float incentive) {
+        this.incentive = incentive;
+    }
+
+
 }

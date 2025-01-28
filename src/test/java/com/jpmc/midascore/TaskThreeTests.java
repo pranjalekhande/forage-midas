@@ -87,7 +87,7 @@ public class TaskThreeTests {
         logger.info("kill this test once you find the answer");
                 
         
-     // Fetch "Waldorf" user record after transactions
+        // Fetch "Waldorf" user record after transactions
         UserRecord waldorf = databaseConduit.getUserByName("waldorf");
         if (waldorf != null) {
             logger.info("----------------------------------------------------------");
