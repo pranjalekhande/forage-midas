@@ -1,20 +1,20 @@
-#spring:
-#  kafka:
-#    consumer:
-#      auto-offset-reset: earliest
-#      group-id: midas
-#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-#      properties:
-#        spring:
-#          json:
-#            trusted:
-#              packages: "*"
-#    producer:
-#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-#server:
-#  port: 33400
-#
-#general:
-#  kafka-topic: "transaction"
-#  incentive-api-url: "http://localhost:8080/incentive"
-general.kafka-topic: transaction-topic
+general:
+  kafka-topic: transactions-topic
+
+spring:
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: midas-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "*"
+    listener:
+      concurrency: 1
+    logging:
+      level:
+        org.apache.kafka.clients.producer: DEBUG
